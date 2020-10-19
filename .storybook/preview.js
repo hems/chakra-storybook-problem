@@ -12,14 +12,17 @@ const newTheme = {
   }
 }
 
-export const Chakra = ({ children }) => (
-  <ChakraProvider theme={newTheme}>
-    <CSSReset />
-    <Box p={5}>
-      {children}
-    </Box>
-  </ChakraProvider>
-)
+export const Chakra = ({ children }) => {
+  console.log("theme.config ->", newTheme.config)
+  
+  return (
+    <ChakraProvider CSSReset theme={newTheme} initialColorMode="dark">
+      <Box p={5}>
+        {children}
+      </Box>
+    </ChakraProvider>
+  )
+}
 
 addDecorator(StoryFn => <Chakra>
   <StoryFn />
